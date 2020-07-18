@@ -1,0 +1,493 @@
+Age<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>TeamTable</title>
+    <style>
+    #pad{
+      padding: 20px;
+    }
+    </style>
+  </head>
+  <body>
+
+    <div id="pad">
+      <h1>Enrolled Students at SDST</h1> <!--creates table-->
+      <table class="table table-bordered">
+        <thead>
+          <tr><!--creates headers for table-->
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th>Age Group</th>
+            <th>Major</th>
+          </tr>
+        </thead class="thead-dark">
+        <tbody><!--creates body for table-->
+          <tr>
+            <td id="p1fn"></td>
+            <td id="p1ln"></td>
+            <td id="p1a"></td>
+            <td id="p1ag"></td>
+            <td id="p1m"></td>
+          </tr>
+          <tr>
+            <td id="p2fn"></td>
+            <td id="p2ln"></td>
+            <td id="p2a"></td>
+            <td id="p2ag"></td>
+            <td id="p2m"></td>
+          </tr>
+          <tr>
+            <td id="p3fn"></td>
+            <td id="p3ln"></td>
+            <td id="p3a"></td>
+            <td id="p3ag"></td>
+            <td id="p3m"></td>
+          </tr>
+          <tr>
+            <td id="p4fn"></td>
+            <td id="p4ln"></td>
+            <td id="p4a"></td>
+            <td id="p4ag"></td>
+            <td id="p4m"></td>
+          </tr>
+          <tr>
+            <td id="p5fn"></td>
+            <td id="p5ln"></td>
+            <td id="p5a"></td>
+            <td id="p5ag"></td>
+            <td id="p5m"></td>
+          </tr>
+          <tr>
+            <td id="p6fn"></td>
+            <td id="p6ln"></td>
+            <td id="p6a"></td>
+            <td id="p6ag"></td>
+            <td id="p6m"></td>
+          </tr>
+          <tr>
+            <td id="p7fn"></td>
+            <td id="p7ln"></td>
+            <td id="p7a"></td>
+            <td id="p7ag"></td>
+            <td id="p7m"></td>
+          </tr>
+          <tr>
+            <td id="p8fn"></td>
+            <td id="p8ln"></td>
+            <td id="p8a"></td>
+            <td id="p8ag"></td>
+            <td id="p8m"></td>
+          </tr>
+          <tr>
+            <td id="p9fn"></td>
+            <td id="p9ln"></td>
+            <td id="p9a"></td>
+            <td id="p9ag"></td>
+            <td id="p9m"></td>
+          </tr>
+          <tr>
+            <td id="p10fn"></td>
+            <td id="p10ln"></td>
+            <td id="p10a"></td>
+            <td id="p10ag"></td>
+            <td id="p10m"></td>
+          </tr>
+          <tr>
+            <td id="p11fn"></td>
+            <td id="p11ln"></td>
+            <td id="p11a"></td>
+            <td id="p11ag"></td>
+            <td id="p11m"></td>
+
+          </tr>
+          <tr>
+            <td id="p12fn"></td>
+            <td id="p12ln"></td>
+            <td id="p12a"></td>
+            <td id="p12ag"></td>
+            <td id="p12m"></td>
+          </tr>
+        </tbody>
+      </table>
+      <br/>
+
+      <h2>To add new students, fill out this form</h2>
+
+      <div class="form-group"><!--form for name-->
+        <label for="usr">First Name:</label>
+        <input type="text" class="form-control" id="afn">
+      </div>
+
+      <div class="form-group"><!--form for name-->
+        <label for="usr">Last Name:</label>
+        <input type="text" class="form-control" id="aln">
+      </div>
+
+      <div class="form-group"><!--form for age-->
+        <label for="sel1">Age:</label>
+        <select class="form-control" id="aa">
+          <option>17</option>
+          <option>18</option>
+          <option>19</option>
+          <option>20</option>
+          <option>21</option>
+          <option>22</option>
+          <option>23</option>
+          <option>24</option>
+        </select>
+      </div>
+
+      <div class="form-group"> <!--form for major-->
+        <label for="sel1">Major:</label>
+        <select class="form-control" id="am">
+          <option>Aerospace Engineering</option>
+          <option>Architecture</option>
+          <option>Bioengineering</option>
+          <option>Chemical Engineering</option>
+          <option>Computer Science</option>
+          <option>Electrical Engineering</option>
+          <option>Industrial Engineering</option>
+          <option>Mechanical Engineering</option>
+          <option>Nuclear Engineering</option>
+          <option>Wildlife Technology</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="usr">ID:</label>
+        <input type="text" class="form-control" id="ai">
+      </div>
+      <br/>
+
+      <a class="btn btn-info" role="button" onclick="UpdateForm()">Submit</a> <!--creates button that submits inputs to function "update form" -->
+    </div>
+
+    <script>
+    var myJSON, AddFirst, AddLast, AddAge, AddMajor, AddID, AddAgeGroup;
+    myJSON = {
+      "students":[{"Firstname":"Bob", "Lastname":"Frances", "Age":"21", "Major":"Computer Science", "id":"e4ilx5lc", "Agegroup":""},
+      {"Firstname":"Darwin", "Lastname":"Samson", "Age":"21", "Major":"Bioengineering", "id":"k9twlecv", "Agegroup":""},
+      {"Firstname":"Jerry", "Lastname":"Ness", "Age":"20", "Major":"Industrial Engineering", "id":"z6e6fgz4", "Agegroup":""},
+      {"Firstname":"Ashton", "Lastname":"Herbertson", "Age":"24", "Major":"Wildlife Technology", "id":"enmg0204", "Agegroup":""},
+      {"Firstname":"Tofi", "Lastname":"Hannigen", "Age":"18", "Major":"Computer Science", "id":"6ybrnaox", "Agegroup":""}],
+    };//creates JSON object with multiple values
+
+    var JSONname = [myJSON.students[0].Lastname, myJSON.students[1].Lastname, myJSON.students[2].Lastname, myJSON.students[3].Lastname, myJSON.students[4].Lastname];//Javascript array with every students last name
+    JSONname.sort();//sorts the names in alphabetical order
+
+    var n = 4;
+    for(var i = 0; i <= n; i++)
+    {
+      if(myJSON.students[i].Age <= 19)//if student is younger than 20
+      {
+        myJSON.students[i].Agegroup = "underclassman";//the student is an underclassman
+      }
+      else if(myJSON.students[i].Age >= 20 && myJSON.students[i].Age <= 22)//if student is between 20 and 22
+      {
+        myJSON.students[i].Agegroup = "upperclassman";//student is an upper classman
+      }
+      else if(myJSON.students[i].Age >= 23)//if student is over 22
+      {
+        myJSON.students[i].Agegroup = "overclassman";//student is an overclassman
+      }
+    }
+    for (var i = 0; i < n; i++)//for loop that goes through every student
+    {
+      if(JSONname[i] == myJSON.students[0].Lastname)//multiple if statements to find that student in the "i" place
+      {//switchs student i with student 0
+        var saver = myJSON.students[0];
+        myJSON.students[0] = myJSON.students[i];
+        myJSON.students[i] = saver;
+      }
+      else if (JSONname[i] == myJSON.students[1].Lastname)
+      {
+        var saver = myJSON.students[1];
+        myJSON.students[1] = myJSON.students[i];
+        myJSON.students[i] = saver;
+      }
+      else if (JSONname[i] == myJSON.students[2].Lastname)
+      {
+        var saver = myJSON.students[2];
+        myJSON.students[2] = myJSON.students[i];
+        myJSON.students[i] = saver;
+      }
+      else if (JSONname[i] == myJSON.students[3].Lastname)
+      {
+        var saver = myJSON.students[3];
+        myJSON.students[3] = myJSON.students[i];
+        myJSON.students[i] = saver;
+      }
+      else if (JSONname[i] == myJSON.students[4].Lastname)
+      {
+        var saver = myJSON.students[4];
+        myJSON.students[4] = myJSON.students[i];
+        myJSON.students[i] = saver;
+      }
+    }
+
+    document.getElementById("p1fn").innerHTML = myJSON.students[0].Firstname;//multiple statement to place student values in their corresponding table boxes
+    document.getElementById("p2fn").innerHTML = myJSON.students[1].Firstname;
+    document.getElementById("p3fn").innerHTML = myJSON.students[2].Firstname;
+    document.getElementById("p4fn").innerHTML = myJSON.students[3].Firstname;
+    document.getElementById("p5fn").innerHTML = myJSON.students[4].Firstname;
+
+    document.getElementById("p1ln").innerHTML = myJSON.students[0].Lastname;
+    document.getElementById("p2ln").innerHTML = myJSON.students[1].Lastname;
+    document.getElementById("p3ln").innerHTML = myJSON.students[2].Lastname;
+    document.getElementById("p4ln").innerHTML = myJSON.students[3].Lastname;
+    document.getElementById("p5ln").innerHTML = myJSON.students[4].Lastname;
+
+    document.getElementById("p1a").innerHTML = myJSON.students[0].Age;
+    document.getElementById("p2a").innerHTML = myJSON.students[1].Age;
+    document.getElementById("p3a").innerHTML = myJSON.students[2].Age;
+    document.getElementById("p4a").innerHTML = myJSON.students[3].Age;
+    document.getElementById("p5a").innerHTML = myJSON.students[4].Age;
+
+    document.getElementById("p1m").innerHTML = myJSON.students[0].Major;
+    document.getElementById("p2m").innerHTML = myJSON.students[1].Major;
+    document.getElementById("p3m").innerHTML = myJSON.students[2].Major;
+    document.getElementById("p4m").innerHTML = myJSON.students[3].Major;
+    document.getElementById("p5m").innerHTML = myJSON.students[4].Major;
+
+    document.getElementById("p1ag").innerHTML = myJSON.students[0].Agegroup;
+    document.getElementById("p2ag").innerHTML = myJSON.students[1].Agegroup;
+    document.getElementById("p3ag").innerHTML = myJSON.students[2].Agegroup;
+    document.getElementById("p4ag").innerHTML = myJSON.students[3].Agegroup;
+    document.getElementById("p5ag").innerHTML = myJSON.students[4].Agegroup;
+
+    function UpdateForm()
+    {
+      AddFirst = document.getElementById("afn").value;//gets the input values and assigns them to variables
+      AddLast = document.getElementById("aln").value;
+      AddAge = document.getElementById("aa").value;
+      AddMajor = document.getElementById("am").value;
+      AddID = document.getElementById("ai").value;
+
+      if(AddAge <= 19)//finds age group based on age
+      {
+        AddAgeGroup = "underclassman"
+      }
+      else if(AddAge >= 20 && myJSON.students[i].Age <= 22)
+      {
+        AddAgeGroup = "upperclassman"
+      }
+      else if(AddAge >= 23)
+      {
+        AddAgeGroup = "overclassman"
+      }
+
+      console.log(myJSON);
+      myJSON['students'].push({"Firstname":AddFirst, "Lastname":AddLast, "Age":AddAge, "Major":AddMajor, "id":AddID, "Agegroup":AddAgeGroup})//adds new student values to the JSON
+      console.log(myJSON);
+
+      n = n+1;//signifies increase in enrolledstudents
+
+      for (var i = 0; i <= n; i++) {
+        JSONname[i]= myJSON.students[i].Lastname;//creates javascript array with all students last names
+      }
+
+      JSONname.sort();//sorts last names in alphabetical order
+      var final = true;//variables to determine if its necessary to check certain if values
+      for (var i = 0; i < n; i++)
+      {
+        if(n >= 5)
+        {
+          if(JSONname[i] == myJSON.students[0].Lastname)//multiple if statements to find that student in the "i" place
+          {//switches student i with student 0
+            var saver = myJSON.students[0];
+            myJSON.students[0] = myJSON.students[i];
+            myJSON.students[i] = saver;
+            final = false;
+
+          }
+          else if (JSONname[i] == myJSON.students[1].Lastname)
+          {
+            var saver = myJSON.students[1];
+            myJSON.students[1] = myJSON.students[i];
+            myJSON.students[i] = saver;
+            final = false;
+          }
+          else if (JSONname[i] == myJSON.students[2].Lastname)
+          {
+            var saver = myJSON.students[2];
+            myJSON.students[2] = myJSON.students[i];
+            myJSON.students[i] = saver;
+            final = false;
+          }
+          else if (JSONname[i] == myJSON.students[3].Lastname)
+          {
+            var saver = myJSON.students[3];
+            myJSON.students[3] = myJSON.students[i];
+            myJSON.students[i] = saver;
+            final = false;
+          }
+          else if (JSONname[i] == myJSON.students[4].Lastname)
+          {
+            var saver = myJSON.students[4];
+            myJSON.students[4] = myJSON.students[i];
+            myJSON.students[i] = saver;
+            final = false;
+          }
+          else if (JSONname[i] == myJSON.students[5].Lastname)
+          {
+            var saver = myJSON.students[5];
+            myJSON.students[5] = myJSON.students[i];
+            myJSON.students[i] = saver;
+            final = false;
+          }
+        }
+        if(n >= 6 && final)
+        {
+          if (JSONname[i] == myJSON.students[6].Lastname)
+          {
+            var saver = myJSON.students[6];
+            myJSON.students[6] = myJSON.students[i];
+            myJSON.students[i] = saver;
+          }
+        }
+        if(n >= 7 && final)
+        {
+          if (JSONname[i] == myJSON.students[7].Lastname)
+          {
+            var saver = myJSON.students[7];
+            myJSON.students[7] = myJSON.students[i];
+            myJSON.students[i] = saver;
+          }
+        }
+        if(n >= 8 && final)
+        {
+          if (JSONname[i] == myJSON.students[8].Lastname)
+          {
+            var saver = myJSON.students[8];
+            myJSON.students[8] = myJSON.students[i];
+            myJSON.students[i] = saver;
+          }
+        }
+        if(n >= 9 && final)
+        {
+          if (JSONname[i] == myJSON.students[9].Lastname)
+          {
+            var saver = myJSON.students[9];
+            myJSON.students[9] = myJSON.students[i];
+            myJSON.students[i] = saver;
+          }
+        }
+        if(n >= 10 && final)
+        {
+          if (JSONname[i] == myJSON.students[10].Lastname)
+          {
+            var saver = myJSON.students[10];
+            myJSON.students[10] = myJSON.students[i];
+            myJSON.students[i] = saver;
+          }
+        }
+        if(n >= 11 && final)
+        {
+          if (JSONname[i] == myJSON.students[11].Lastname)
+          {
+            var saver = myJSON.students[11];
+            myJSON.students[11] = myJSON.students[i];
+            myJSON.students[i] = saver;
+          }
+        }
+      }
+
+      document.getElementById("p1fn").innerHTML = myJSON.students[0].Firstname;//multiple statements that assign values to their boxes
+      document.getElementById("p2fn").innerHTML = myJSON.students[1].Firstname;
+      document.getElementById("p3fn").innerHTML = myJSON.students[2].Firstname;
+      document.getElementById("p4fn").innerHTML = myJSON.students[3].Firstname;
+      document.getElementById("p5fn").innerHTML = myJSON.students[4].Firstname;
+
+      document.getElementById("p1ln").innerHTML = myJSON.students[0].Lastname;
+      document.getElementById("p2ln").innerHTML = myJSON.students[1].Lastname;
+      document.getElementById("p3ln").innerHTML = myJSON.students[2].Lastname;
+      document.getElementById("p4ln").innerHTML = myJSON.students[3].Lastname;
+      document.getElementById("p5ln").innerHTML = myJSON.students[4].Lastname;
+
+      document.getElementById("p1a").innerHTML = myJSON.students[0].Age;
+      document.getElementById("p2a").innerHTML = myJSON.students[1].Age;
+      document.getElementById("p3a").innerHTML = myJSON.students[2].Age;
+      document.getElementById("p4a").innerHTML = myJSON.students[3].Age;
+      document.getElementById("p5a").innerHTML = myJSON.students[4].Age;
+
+      document.getElementById("p1m").innerHTML = myJSON.students[0].Major;
+      document.getElementById("p2m").innerHTML = myJSON.students[1].Major;
+      document.getElementById("p3m").innerHTML = myJSON.students[2].Major;
+      document.getElementById("p4m").innerHTML = myJSON.students[3].Major;
+      document.getElementById("p5m").innerHTML = myJSON.students[4].Major;
+
+      document.getElementById("p1ag").innerHTML = myJSON.students[0].Agegroup;
+      document.getElementById("p2ag").innerHTML = myJSON.students[1].Agegroup;
+      document.getElementById("p3ag").innerHTML = myJSON.students[2].Agegroup;
+      document.getElementById("p4ag").innerHTML = myJSON.students[3].Agegroup;
+      document.getElementById("p5ag").innerHTML = myJSON.students[4].Agegroup;
+
+      if(n >=5)//if the number of students is greater than or equal to 5
+      {//assign values to the 6th row
+        document.getElementById("p6fn").innerHTML = myJSON.students[5].Firstname;
+        document.getElementById("p6ln").innerHTML = myJSON.students[5].Lastname;
+        document.getElementById("p6a").innerHTML = myJSON.students[5].Age;
+        document.getElementById("p6m").innerHTML = myJSON.students[5].Major;
+        document.getElementById("p6ag").innerHTML = myJSON.students[5].Agegroup;
+      }
+      if(n >=6)
+      {
+        document.getElementById("p7fn").innerHTML = myJSON.students[6].Firstname;
+        document.getElementById("p7ln").innerHTML = myJSON.students[6].Lastname;
+        document.getElementById("p7a").innerHTML = myJSON.students[6].Age;
+        document.getElementById("p7m").innerHTML = myJSON.students[6].Major;
+        document.getElementById("p7ag").innerHTML = myJSON.students[6].Agegroup;
+      }
+      if(n >=7)
+      {
+        document.getElementById("p8fn").innerHTML = myJSON.students[7].Firstname;
+        document.getElementById("p8ln").innerHTML = myJSON.students[7].Lastname;
+        document.getElementById("p8a").innerHTML = myJSON.students[7].Age;
+        document.getElementById("p8m").innerHTML = myJSON.students[7].Major;
+        document.getElementById("p8ag").innerHTML = myJSON.students[7].Agegroup;
+      }
+      if(n >=8)
+      {
+        document.getElementById("p9fn").innerHTML = myJSON.students[8].Firstname;
+        document.getElementById("p9ln").innerHTML = myJSON.students[8].Lastname;
+        document.getElementById("p9a").innerHTML = myJSON.students[8].Age;
+        document.getElementById("p9m").innerHTML = myJSON.students[8].Major;
+        document.getElementById("p9ag").innerHTML = myJSON.students[8].Agegroup;
+      }
+      if(n >=9)
+      {
+        document.getElementById("p10fn").innerHTML = myJSON.students[9].Firstname;
+        document.getElementById("p10ln").innerHTML = myJSON.students[9].Lastname;
+        document.getElementById("p10a").innerHTML = myJSON.students[9].Age;
+        document.getElementById("p10m").innerHTML = myJSON.students[9].Major;
+        document.getElementById("p10ag").innerHTML = myJSON.students[9].Agegroup;
+      }
+      if(n >=10)
+      {
+        document.getElementById("p11fn").innerHTML = myJSON.students[10].Firstname;
+        document.getElementById("p11ln").innerHTML = myJSON.students[10].Lastname;
+        document.getElementById("p11a").innerHTML = myJSON.students[10].Age;
+        document.getElementById("p11m").innerHTML = myJSON.students[10].Major;
+        document.getElementById("p11ag").innerHTML = myJSON.students[10].Agegroup;
+      }
+      if(n >=11)
+      {
+        document.getElementById("p12fn").innerHTML = myJSON.students[11].Firstname;
+        document.getElementById("p12ln").innerHTML = myJSON.students[11].Lastname;
+        document.getElementById("p12a").innerHTML = myJSON.students[11].Age;
+        document.getElementById("p12m").innerHTML = myJSON.students[11].Major;
+        document.getElementById("p12ag").innerHTML = myJSON.students[11].Agegroup;
+      }
+
+
+    }
+    </script>
+  </body>
+</html>
